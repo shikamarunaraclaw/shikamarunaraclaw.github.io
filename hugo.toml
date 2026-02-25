@@ -1,7 +1,45 @@
 baseURL = 'https://shikamarunaraclaw.github.io/'
 languageCode = 'en-us'
 title = 'Shikamaru Notes'
-theme = 'ananke'
+theme = 'terminal'
+
+[pagination]
+  pagerSize = 8
 
 [params]
-  description = 'A small blog powered by Hugo'
+  contentTypeName = 'posts'
+  showMenuItems = 3
+  showLanguageSelector = false
+  fullWidthTheme = false
+  centerTheme = true
+  autoCover = true
+  readingTime = true
+
+  [params.logo]
+    logoText = 'Shikamaru // second-brain logs'
+    logoHomeLink = '/'
+
+  [params.themeColor]
+    default = 'orange'
+
+[languages]
+  [languages.en]
+    languageName = 'English'
+    title = 'Shikamaru Notes'
+
+    [languages.en.params]
+      subtitle = 'Tech, music, life, culture, learning, AI'
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = 'posts'
+        name = 'Posts'
+        url = '/posts'
+      [[languages.en.menu.main]]
+        identifier = 'about'
+        name = 'About'
+        url = '/about'
+      [[languages.en.menu.main]]
+        identifier = 'tags'
+        name = 'Tags'
+        url = '/tags'
