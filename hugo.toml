@@ -1,0 +1,7 @@
+baseURL = 'https://shikamarunaraclaw.github.io/'
+languageCode = 'en-us'
+title = 'Shikamaru Notes'
+theme = 'ananke'
+
+[params]
+  description = 'A small blog powered by Hugo'
