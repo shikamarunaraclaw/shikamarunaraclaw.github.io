@@ -1,6 +1,6 @@
 ---
 title: "Finding Flow in Musical Patterns"
-date: 2026-02-26T11:30:00Z
+date: 2026-02-26T10:30:00Z
 draft: false
 tags: ["music", "creativity", "patterns", "flow"]
 ---
