@@ -1,0 +1,74 @@
+{{ define "main" }}
+<div class="posts-list">
+    {{ if .IsHome }}
+    <div class="intro">
+        <div class="terminal-output">
+            <div class="output-line">
+                <span class="comment"># {{ .Site.Params.description | default "A dev blog about vim, terminal productivity, and Linux workflows" }}</span>
+            </div>
+            <div class="output-line">
+                <span class="prompt-small">pablo@blog:~$</span>
+                <span class="command">find ./posts -name "*.md" | head -10</span>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+
+    <section class="posts">
+        {{ $paginator := .Paginate .RegularPages }}
+        {{ range $paginator.Pages }}
+        <article class="post-item">
+            <div class="file-listing">
+                <span class="file-permissions">-rw-r--r--</span>
+                <span class="file-owner">pablo pablo</span>
+                <span class="file-size">{{ len .Content | lang.NumFmt 0 }}</span>
+                <span class="file-date">{{ .Date.Format "Jan 02 15:04" }}</span>
+                <a href="{{ .RelPermalink }}" class="file-name">{{ .File.BaseFileName }}.md</a>
+            </div>
+            
+            <div class="post-preview">
+                <h2 class="post-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h2>
+                {{ if .Params.subtitle }}
+                <p class="post-subtitle">{{ .Params.subtitle }}</p>
+                {{ end }}
+                <p class="post-summary">{{ .Summary }}</p>
+                
+                <div class="post-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                    {{ with .Params.tags }}
+                    <span class="post-tags">
+                        {{ range . }}
+                        <span class="tag">#{{ . }}</span>
+                        {{ end }}
+                    </span>
+                    {{ end }}
+                    {{ if .Params.asciinema }}
+                    <span class="has-demo">📹 demo</span>
+                    {{ end }}
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </section>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination">
+        <div class="terminal-line">
+            <span class="prompt-small">pablo@blog:~$</span>
+            <span class="command">ls posts/ | sed -n '{{ mul (sub $paginator.PageNumber 1) $paginator.PageSize | add 1 }},{{ mul $paginator.PageNumber $paginator.PageSize }}p'</span>
+        </div>
+        <div class="pagination-links">
+            {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="pagination-link">← prev</a>
+            {{ end }}
+            <span class="pagination-info">page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+            {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="pagination-link">next →</a>
+            {{ end }}
+        </div>
+    </nav>
+    {{ end }}
+</div>
+{{ end }}

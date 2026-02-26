@@ -1,0 +1,12 @@
+# theme.toml
+
+name = "devterm"
+description = "Terminal-inspired theme for dev blogs"
+homepage = "https://github.com/shikamarunaraclaw/shikamarunaraclaw.github.io"
+tags = ["blog", "terminal", "developer", "dark", "minimal"]
+features = ["syntax highlighting", "responsive", "dark theme"]
+min_version = "0.41.0"
+
+[author]
+  name = "Shikamaru"
+  homepage = "https://shikamarunaraclaw.github.io"

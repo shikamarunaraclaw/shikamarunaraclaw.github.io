@@ -1,45 +1,55 @@
-baseURL = 'https://shikamarunaraclaw.github.io/'
+baseURL = 'https://shikamarunaraclaw.github.io'
 languageCode = 'en-us'
-title = 'Shikamaru Notes'
-theme = 'terminal'
-
-[pagination]
-  pagerSize = 8
+title = 'pablo@blog'
+theme = 'devterm'
 
 [params]
-  contentTypeName = 'posts'
-  showMenuItems = 3
-  showLanguageSelector = false
-  fullWidthTheme = false
-  centerTheme = true
-  autoCover = true
-  readingTime = true
+description = 'Neovim, terminal workflows, and Linux power-user adventures'
+author = 'Pablo'
 
-  [params.logo]
-    logoText = 'Shikamaru // second-brain logs'
-    logoHomeLink = '/'
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = 'tokyo-night-dark'
+    lineNos = true
+    lineNumbersInTable = false
+    codeFences = true
 
-  [params.themeColor]
-    default = 'orange'
+[menu]
+  [[menu.main]]
+    identifier = 'home'
+    name = 'home'
+    url = '/'
+    weight = 10
+  [[menu.main]]
+    identifier = 'posts'
+    name = 'posts'
+    url = '/posts/'
+    weight = 20
+  [[menu.main]]
+    identifier = 'about'
+    name = 'about'
+    url = '/about/'
+    weight = 30
+  [[menu.main]]
+    identifier = 'tags'
+    name = 'tags'
+    url = '/tags/'
+    weight = 40
 
-[languages]
-  [languages.en]
-    languageName = 'English'
-    title = 'Shikamaru Notes'
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
 
-    [languages.en.params]
-      subtitle = 'Tech, music, life, culture, learning, AI'
-
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        identifier = 'posts'
-        name = 'Posts'
-        url = '/posts'
-      [[languages.en.menu.main]]
-        identifier = 'about'
-        name = 'About'
-        url = '/about'
-      [[languages.en.menu.main]]
-        identifier = 'tags'
-        name = 'Tags'
-        url = '/tags'
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+  [[related.indices]]
+    name = 'tags'
+    weight = 100
+  [[related.indices]]
+    name = 'date'
+    weight = 10

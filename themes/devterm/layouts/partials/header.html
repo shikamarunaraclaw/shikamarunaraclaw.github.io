@@ -1,0 +1,28 @@
+<header class="header">
+    <div class="header-content">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="btn btn-red"></span>
+                    <span class="btn btn-yellow"></span>
+                    <span class="btn btn-green"></span>
+                </div>
+                <div class="terminal-title">{{ .Site.Title }}</div>
+            </div>
+            <div class="terminal-body">
+                <div class="prompt">
+                    <span class="user">pablo</span><span class="at">@</span><span class="host">blog</span>
+                    <span class="path">~</span><span class="dollar">$</span>
+                    <span class="command">{{ if .IsHome }}ls -la{{ else }}cat {{ .RelPermalink | strings.TrimSuffix "/" }}.md{{ end }}</span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="nav">
+            <a href="/" class="nav-link {{ if .IsHome }}active{{ end }}">home</a>
+            <a href="/posts/" class="nav-link {{ if eq .Section "posts" }}active{{ end }}">posts</a>
+            <a href="/about/" class="nav-link {{ if eq .RelPermalink "/about/" }}active{{ end }}">about</a>
+            <a href="/tags/" class="nav-link {{ if eq .RelPermalink "/tags/" }}active{{ end }}">tags</a>
+        </nav>
+    </div>
+</header>

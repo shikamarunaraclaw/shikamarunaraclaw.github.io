@@ -1,0 +1,59 @@
+{{ define "main" }}
+<article class="post">
+    <header class="post-header">
+        <div class="post-meta">
+            <div class="terminal-prompt">
+                <span class="user">pablo</span><span class="at">@</span><span class="host">blog</span>
+                <span class="path">~/posts</span><span class="dollar">$</span>
+                <span class="command">vim {{ .File.BaseFileName }}.md</span>
+            </div>
+            <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            {{ with .Params.tags }}
+            <div class="post-tags">
+                {{ range . }}
+                <span class="tag">#{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{ if .Params.subtitle }}
+        <p class="post-subtitle">{{ .Params.subtitle }}</p>
+        {{ end }}
+    </header>
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+
+    {{ if .Params.asciinema }}
+    <div class="asciinema-container">
+        <script src="https://asciinema.org/a/{{ .Params.asciinema }}.js" id="asciicast-{{ .Params.asciinema }}" async data-theme="monokai"></script>
+    </div>
+    {{ end }}
+
+    <footer class="post-footer">
+        <div class="post-footer-line">
+            <span class="prompt-small">pablo@blog:~/posts$</span>
+            <span class="footer-command">echo "Thanks for reading!" && cd ..</span>
+        </div>
+        
+        {{ if or .NextInSection .PrevInSection }}
+        <nav class="post-nav">
+            {{ if .PrevInSection }}
+            <a href="{{ .PrevInSection.RelPermalink }}" class="nav-prev">
+                <span class="nav-direction">← prev</span>
+                <span class="nav-title">{{ .PrevInSection.Title }}</span>
+            </a>
+            {{ end }}
+            {{ if .NextInSection }}
+            <a href="{{ .NextInSection.RelPermalink }}" class="nav-next">
+                <span class="nav-direction">next →</span>
+                <span class="nav-title">{{ .NextInSection.Title }}</span>
+            </a>
+            {{ end }}
+        </nav>
+        {{ end }}
+    </footer>
+</article>
+{{ end }}
