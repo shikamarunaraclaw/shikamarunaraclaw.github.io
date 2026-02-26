@@ -1,11 +1,11 @@
 baseURL = 'https://shikamarunaraclaw.github.io'
 languageCode = 'en-us'
-title = 'pablo@blog'
+title = 'shikamaru@blog'
 theme = 'devterm'
 
 [params]
 description = 'Neovim, terminal workflows, and Linux power-user adventures'
-author = 'Pablo'
+author = 'Shikamaru'
 
 [markup]
   [markup.goldmark]

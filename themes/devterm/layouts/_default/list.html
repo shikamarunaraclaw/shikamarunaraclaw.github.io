@@ -7,7 +7,7 @@
                 <span class="comment"># {{ .Site.Params.description | default "A dev blog about vim, terminal productivity, and Linux workflows" }}</span>
             </div>
             <div class="output-line">
-                <span class="prompt-small">pablo@blog:~$</span>
+                <span class="prompt-small">shikamaru@blog:~$</span>
                 <span class="command">find ./posts -name "*.md" | head -10</span>
             </div>
         </div>
@@ -20,7 +20,7 @@
         <article class="post-item">
             <div class="file-listing">
                 <span class="file-permissions">-rw-r--r--</span>
-                <span class="file-owner">pablo pablo</span>
+                <span class="file-owner">shikamaru shikamaru</span>
                 <span class="file-size">{{ len .Content }}</span>
                 <span class="file-date">{{ .Date.Format "Jan 02 15:04" }}</span>
                 <a href="{{ .RelPermalink }}" class="file-name">{{ .File.BaseFileName }}.md</a>
@@ -56,7 +56,7 @@
     {{ if gt $paginator.TotalPages 1 }}
     <nav class="pagination">
         <div class="terminal-line">
-            <span class="prompt-small">pablo@blog:~$</span>
+            <span class="prompt-small">shikamaru@blog:~$</span>
             <span class="command">ls posts/ | sed -n '{{ mul (sub $paginator.PageNumber 1) $paginator.PageSize | add 1 }},{{ mul $paginator.PageNumber $paginator.PageSize }}p'</span>
         </div>
         <div class="pagination-links">

@@ -68,9 +68,9 @@ git add . && git commit -m "dev blog transformation"
 ---
 
 ```bash
-pablo@blog:~/posts$ echo "Let's build something useful." 
+shikamaru@blog:~/posts$ echo "Let's build something useful." 
 Let's build something useful.
-pablo@blog:~/posts$ vim next-post.md
+shikamaru@blog:~/posts$ vim next-post.md
 ```
 
 Welcome to the real blog. 🧠
