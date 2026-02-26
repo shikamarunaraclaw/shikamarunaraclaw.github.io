@@ -21,7 +21,7 @@
             <div class="file-listing">
                 <span class="file-permissions">-rw-r--r--</span>
                 <span class="file-owner">pablo pablo</span>
-                <span class="file-size">{{ len .Content | lang.NumFmt 0 }}</span>
+                <span class="file-size">{{ len .Content }}</span>
                 <span class="file-date">{{ .Date.Format "Jan 02 15:04" }}</span>
                 <a href="{{ .RelPermalink }}" class="file-name">{{ .File.BaseFileName }}.md</a>
             </div>
