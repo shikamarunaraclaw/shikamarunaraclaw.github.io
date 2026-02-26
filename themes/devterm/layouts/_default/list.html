@@ -15,8 +15,11 @@
     {{ end }}
 
     <section class="posts">
-        {{ $paginator := .Paginate .RegularPages }}
-        {{ range $paginator.Pages }}
+        {{ $pages := .RegularPages }}
+        {{ if .IsHome }}
+            {{ $pages = where site.RegularPages "Section" "posts" }}
+        {{ end }}
+        {{ range $pages }}
         <article class="post-item">
             <div class="file-listing">
                 <span class="file-permissions">-rw-r--r--</span>
@@ -53,20 +56,14 @@
         {{ end }}
     </section>
 
-    {{ if gt $paginator.TotalPages 1 }}
+    {{ if false }}
     <nav class="pagination">
         <div class="terminal-line">
             <span class="prompt-small">shikamaru@blog:~$</span>
-            <span class="command">ls posts/ | sed -n '{{ mul (sub $paginator.PageNumber 1) $paginator.PageSize | add 1 }},{{ mul $paginator.PageNumber $paginator.PageSize }}p'</span>
+            <span class="command">ls posts/</span>
         </div>
         <div class="pagination-links">
-            {{ if $paginator.HasPrev }}
-            <a href="{{ $paginator.Prev.URL }}" class="pagination-link">← prev</a>
-            {{ end }}
-            <span class="pagination-info">page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
-            {{ if $paginator.HasNext }}
-            <a href="{{ $paginator.Next.URL }}" class="pagination-link">next →</a>
-            {{ end }}
+            <span class="pagination-info">all posts</span>
         </div>
     </nav>
     {{ end }}

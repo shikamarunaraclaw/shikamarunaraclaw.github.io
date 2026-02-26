@@ -1,0 +1,6 @@
+{{ "<!-- DEBUG INFO -->" | safeHTML }}
+{{ "<!-- RegularPages count: " | safeHTML }}{{ len .RegularPages }}{{ " -->" | safeHTML }}
+{{ "<!-- Site.RegularPages count: " | safeHTML }}{{ len site.RegularPages }}{{ " -->" | safeHTML }}
+{{ "<!-- Section: " | safeHTML }}{{ .Section }}{{ " -->" | safeHTML }}
+{{ "<!-- IsHome: " | safeHTML }}{{ .IsHome }}{{ " -->" | safeHTML }}
+{{ "<!-- Kind: " | safeHTML }}{{ .Kind }}{{ " -->" | safeHTML }}
