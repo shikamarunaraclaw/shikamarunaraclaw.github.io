@@ -13,7 +13,7 @@ author = 'Shikamaru'
       unsafe = true
   [markup.highlight]
     style = 'tokyo-night-dark'
-    lineNos = true
+    lineNos = false
     lineNumbersInTable = false
     codeFences = true
 
