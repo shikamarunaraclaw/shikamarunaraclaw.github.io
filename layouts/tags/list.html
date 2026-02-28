@@ -1,0 +1,57 @@
+{{ define "main" }}
+<div class="posts-list">
+    <div class="intro">
+        <div class="terminal-output">
+            <div class="output-line">
+                <span class="comment"># All tags used in blog posts</span>
+            </div>
+            <div class="output-line">
+                <span class="prompt-small">shikamaru@blog:~$</span>
+                <span class="command">find ./posts -name "*.md" -exec grep -h "tags:" {} \; | sort | uniq -c</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="posts">
+        {{ range .Site.Taxonomies.tags.ByCount }}
+        <article class="post-item">
+            <div class="file-listing">
+                <span class="file-permissions">dr-xr-xr-x</span>
+                <span class="file-owner">shikamaru shikamaru</span>
+                <span class="file-size">{{ .Count }}</span>
+                <span class="file-date">{{ now.Format "Jan 02 15:04" }}</span>
+                <a href="{{ .Page.RelPermalink }}" class="file-name">{{ .Page.Title }}/</a>
+            </div>
+            
+            <div class="post-preview">
+                <h2 class="post-title">
+                    <a href="{{ .Page.RelPermalink }}">#{{ .Page.Title }}</a>
+                    <span class="tag-count">({{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }})</span>
+                </h2>
+                <p class="post-summary">View all posts tagged with "{{ .Page.Title }}"</p>
+                
+                <div class="post-meta">
+                    <span class="post-tags">
+                        {{ range first 3 .Pages }}
+                            <span class="tag-preview">{{ .Title }}</span>{{ if ne . (index $.Pages 2) }}, {{ end }}
+                        {{ end }}
+                        {{ if gt (len .Pages) 3 }}
+                            <span class="tag-preview">+{{ sub (len .Pages) 3 }} more</span>
+                        {{ end }}
+                    </span>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </section>
+
+    {{ if gt (len .Site.Taxonomies.tags) 0 }}
+    <nav class="pagination">
+        <div class="terminal-line">
+            <span class="prompt-small">shikamaru@blog:~$</span>
+            <span class="command">echo "Found {{ len .Site.Taxonomies.tags }} tags across {{ len site.RegularPages }} posts"</span>
+        </div>
+    </nav>
+    {{ end }}
+</div>
+{{ end }}
